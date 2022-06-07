@@ -29,8 +29,7 @@
                    <div class="d-flex align-items-center">
                       <img src="{{ asset('back/images/avatars/avatar-1.png') }}" alt="" class="rounded-circle" width="54" height="54">
                       <div class="ms-3">
-                        <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                        <small class="mb-0 dropdown-user-designation text-secondary">HR Manager</small>
+                        <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
                       </div>
                    </div>
                  </a>
@@ -51,37 +50,15 @@
                        <div class="ms-3"><span>Setting</span></div>
                      </div>
                    </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="index2.html">
-                     <div class="d-flex align-items-center">
-                       <div class=""><i class="bi bi-speedometer"></i></div>
-                       <div class="ms-3"><span>Dashboard</span></div>
-                     </div>
-                   </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                     <div class="d-flex align-items-center">
-                       <div class=""><i class="bi bi-piggy-bank-fill"></i></div>
-                       <div class="ms-3"><span>Earnings</span></div>
-                     </div>
-                   </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                     <div class="d-flex align-items-center">
-                       <div class=""><i class="bi bi-cloud-arrow-down-fill"></i></div>
-                       <div class="ms-3"><span>Downloads</span></div>
-                     </div>
-                   </a>
-                </li>
+                  </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                  <a class="dropdown-item" href="authentication-signup-with-header-footer.html">
+                  <a class="dropdown-item" href="{{ route('logout')}}">
                      <div class="d-flex align-items-center">
                        <div class=""><i class="bi bi-lock-fill"></i></div>
-                       <div class="ms-3"><span>Logout</span></div>
+
+                       <div class="ms-3"><span>Çıkış Yap</span></div>
+                     
                      </div>
                    </a>
                 </li>

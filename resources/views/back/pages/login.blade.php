@@ -8,6 +8,7 @@
   <link rel="icon" href="{{ asset('back/images/favicon-32x32.png') }}" type="image/png" />
   <!-- Bootstrap CSS -->
   
+
   <link href="{{ asset('back/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('back/css/bootstrap-extended.css') }}" rel="stylesheet" />
   <link href="{{ asset('back/css/style.css') }}" rel="stylesheet" />
@@ -17,6 +18,8 @@
 
   <!-- loader-->
   <link href="{{ asset('back/css/pace.min.css') }}" rel="stylesheet" />
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <title>Giriş Yap | Antalya Bilim Üniversitesi </title>
 </head>
@@ -68,8 +71,11 @@
                           <div class="col-12">	<a href="authentication-forgot-password.html">Şifremi Unuttum ?</a>
                           </div>
                           <div class="col-12">
-                            <div class="d-grid">
-                              <button type="submit" class="btn btn-primary radius-30">Giriş Yap</button>
+                            <div class="col-12">
+                              <div class="g-recaptcha" data-sitekey="6Ldmg00gAAAAAJjtdLkx5OtDCZTBY9KGC81a61n-"></div>
+                            </div>
+                            <div class="d-grid mt-2">
+                              <button type="submit" class="btn radius-30 btn-info text-white" >Giriş Yap</button>
                             </div>
                           </div>
                           
