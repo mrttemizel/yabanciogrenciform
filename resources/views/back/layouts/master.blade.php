@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   
 
-  @yield('addcss')
+  
 
   <!-- loader-->
 	<link href="{{ asset('back/css/pace.min.css') }}" rel="stylesheet" />
@@ -39,6 +39,7 @@
   <link href="{{ asset('back/css/semi-dark.css') }}" rel="stylesheet" />
   <link href="{{ asset('back/css/header-colors.css') }}" rel="stylesheet" />
 
+  @yield('addcss')
   <title>Antalya Bilim Üniversitesi</title>
 </head>
 
