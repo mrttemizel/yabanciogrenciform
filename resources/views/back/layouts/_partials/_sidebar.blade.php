@@ -15,19 +15,28 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
       <li>
-        <a href="{{ route('home') }}" target="_blank">
+        <a href="{{ route('home') }}">
           <div class="parent-icon"><i class="fadeIn animated bx bx-home-circle"></i>
           </div>
           
           <div class="menu-title">Anasayfa</div>
         </a>
       </li>
+    
       <li>
-        <a href=" {{ route('settings.index') }} " target="_blank">
+        <a href=" {{ route('settings.index') }} ">
           <div class="parent-icon"><i class="lni lni-cog"></i>
           </div>
           
           <div class="menu-title">Site Ayarları</div>
+        </a>
+      </li>
+      <li>
+        <a href=" {{ route('kurumsal.index') }} ">
+          <div class="parent-icon"><i class="lni lni-apartment"></i>
+          </div>
+          
+          <div class="menu-title">Kurumsal</div>
         </a>
       </li>
 
@@ -59,6 +68,37 @@
         </ul>
       </li>  
 
+      
+      <li class="menu-label">Duyurular</li>
+      <li>
+        <a href="javascript:;" class="has-arrow">
+          <div class="parent-icon"><i class="lni lni-flag"></i>
+          </div>
+          <div class="menu-title">Duyurular</div>
+        </a>
+        <ul>
+          <li> <a href="{{ route('announcement.create')}}"><i class="lni lni-archive"></i>Duyuru Ekle</a>
+          </li>
+          <li> <a href="{{ route('announcement.index')}}"><i class="lni lni-plus"></i>Duyuru Listele</a>
+          </li>
+        </ul>
+      </li> 
+      
+      <li class="menu-label">Projeler</li>
+      <li>
+        <a href="javascript:;" class="has-arrow">
+          <div class="parent-icon"><i class="lni lni-write"></i>
+          </div>
+          <div class="menu-title">Projeler</div>
+        </a>
+        <ul>
+          <li> <a href="{{ route('projects.create')}}"><i class="lni lni-archive"></i>Proje Ekle</a>
+          </li>
+          <li> <a href="{{ route('projects.index')}}"><i class="lni lni-plus"></i>Proje Listele</a>
+          </li>
+        </ul>
+      </li> 
+
       <li class="menu-label">Slider</li>
       <li>
         <a href="javascript:;" class="has-arrow">
@@ -73,6 +113,13 @@
           </li>
         </ul>
       </li>  
+
+
+
+
+      
+
+
     </ul>
     <!--end navigation-->
  </aside>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -23,23 +24,25 @@ class UserController extends Controller
 
         $request->validate(
             [
-                'password' => 'confirmed|min:6',
+                'oldpassword' => 'required',
+                'password' => 'required|min:6|confirmed',
+              
+               
             ],
         );
 
-           $data = User::find($request->id);
+        $data = User::find($request->id);
 
-            if($data->password == Hash::make($request->password))
-            {
-                $data -> password = Hash::make($request->input('password'));
-                $data->save();
-                return redirect()->back()->with('status','Şifre Değiştirme İşlemi Başarılı');
-            }
+        if(Hash::check($request->oldpassword,$data->password)){
 
-            return redirect()->back()->with('status','Islem Basarisiz');    
+            $data -> password = Hash::make($request->input('password'));
+            $data->save();
 
-           
+            return redirect()->back()->with('status','Şifre Değiştirme İşlemi Başarılı');
+        }
 
+        
+            return redirect()->back()->with('status-warning','Girilen Şifre Hatalıdır');    
        
 
     }
@@ -47,6 +50,17 @@ class UserController extends Controller
 
     public function profilupdate(Request $request)
     {
+
+        $request->validate(
+            [
+                'email' => 'email|required',
+                'name' => 'required|min:4|max:25',
+            ],
+        );
+    
+
+
+
         $data = User::find($request->id);
 
 
