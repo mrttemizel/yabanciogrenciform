@@ -39,7 +39,7 @@ class StudentController extends Controller
                 'ilce' => 'required',
                 'adres' => 'required',
                 'cep_number' => 'required',
-                'email' => 'required|unique:students|email',
+                'email' => 'required|email',
                 'university' => 'required',
                 'faculty' => 'required',
                 'birim' => 'required',

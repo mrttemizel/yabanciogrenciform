@@ -124,7 +124,7 @@
                                         <td>Belge Yüklenmemiş</td>
                                     @else
                                     <td>
-                                        <a href="{{ asset('front/uploads/basvuru/'.$student->alesBelge) }}">
+                                        <a href="{{ asset('front/uploads/basvuru/'.$student->alesBelge) }}"  target="_blank">
                                         <button class="btn btn-sm btn-danger">İNDİR</button></a>
                                     </td>
                                      @endif
@@ -136,26 +136,26 @@
                                         @if (empty($student->ydsBelge))
                                         <td>Belge Yüklenmemiş</td>
                                     @else
-                                    <td><a href="{{ asset('front/uploads/basvuru/'.$student->ydsBelge) }}">
+                                    <td><a href="{{ asset('front/uploads/basvuru/'.$student->ydsBelge) }}"  target="_blank">
                                         <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
                                     @endif
                                     </tr>
 
                                     <tr>  
                                         <td>Kimlik Belge :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->kimlik) }}">
+                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->kimlik) }}"  target="_blank">
                                             <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
                                     </tr>
 
                                     <tr>  
                                         <td>Diploma :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->diploma) }}">
+                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->diploma) }}"  target="_blank">
                                             <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
                                         
                                     </tr>
                                     <tr>  
                                         <td>Transcript :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->transkript) }}">
+                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->transkript) }}"  target="_blank">
                                             <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
                                     </tr>
                                     
@@ -165,7 +165,7 @@
                                         @if (empty($student->askerlikDurumuBelgesi))
                                         <td>Belge Yüklenmemiş</td>
                                     @else
-                                    <td> <a href="{{ asset('front/uploads/basvuru/'.$student->askerlikDurumuBelgesi) }}">
+                                    <td> <a href="{{ asset('front/uploads/basvuru/'.$student->askerlikDurumuBelgesi) }}"  target="_blank">
                                         <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
                                     @endif
                                     </tr>

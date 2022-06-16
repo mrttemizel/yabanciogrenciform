@@ -80,7 +80,7 @@
                 <div class="card shadow-sm border-0 overflow-hidden">
                   <div class="card-body">
                       <div class="profile-avatar text-center">
-                        <img src="{{ asset('back/uploads/userprofil/'.$data->image) }}" class="rounded-circle shadow" width="120" height="120" alt="">
+                        <img src="{{ asset('back/logo.png') }}" style="object-fit:contain" class="rounded-circle shadow" width="120" height="120" alt="">
                       </div>
                   
                       <div class="text-center mt-4">
