@@ -73,7 +73,7 @@ text-align: center;
           <h5 class="text-center" style="color: #172751">@lang('form.baslik')</h5>
           <div class="dropdown lang-dropdown mb-4">
             <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                @lang('form.diller')
+                Language
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
               <li> <a href="locale/en">@lang('form.en')</a></li>
@@ -338,11 +338,10 @@ text-align: center;
                 <input class="form-check-input" name="kvkk" type="checkbox" value="on" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault"><a href="https://antalya.edu.tr/tr/kvkk-aydinlatma-metni"><span class="text-danger">* </span> @lang('form.kvkk')</label>
                     <div class="bg-light-danger ml-3">{{$errors->first('kvkk')}}</div>
-                </div>
+            </div>
            
-
-                <div class="g-recaptcha" name='g-recaptcha-response' data-sitekey="6LfYwHQgAAAAAFiMRGkKQ2bqq5s84Y2ZUDWhn2rR"></div>
-                <div class="bg-light-danger ml-3">{{$errors->first('g-recaptcha-response')}}</div>
+           
+                
 
 
          <div class="form-group mb-3 mt-2">

@@ -52,8 +52,7 @@ class StudentController extends Controller
                 'transkript' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
                 'askerlikDurumuBelgesi' => 'mimes:docx,pdf,jpg,bmp,png,doc',
                 'kvkk' => 'required',
-                'g-recaptcha-response' => 'required'
-              
+                              
             ],
         );
         
@@ -83,37 +82,79 @@ class StudentController extends Controller
        $data -> kvkk = $request->input('kvkk');
      
        
-       $alesBelge =  $request->file('alesBelge');
-       $name_alesBelge = 'ALES'.date('Ymdhis').'.'.$request->file('alesBelge')->getClientOriginalExtension();
-       $alesBelge->move('Front/uploads/basvuru',$name_alesBelge); 
-       $data->alesBelge = $name_alesBelge;
+
+       if($request -> hasFile('alesBelge'))
+        {
+            $alesBelge =  $request->file('alesBelge');
+            $name_alesBelge = $request->input('name').' '.$request->input('surname').'-'.'ALES'.date('Ymdhis').'.'.$request->file('alesBelge')->getClientOriginalExtension();
+            $alesBelge->move('Front/uploads/basvuru',$name_alesBelge); 
+            $data->alesBelge = $name_alesBelge;
+         
+        }
+      
+        if($request -> hasFile('ydsBelge'))
+        {
+            $ydsBelge =  $request->file('ydsBelge');
+            $name_ydsBelge = $request->input('name').' '.$request->input('surname').'-'.'YDS'.date('Ymdhis').'.'.$request->file('ydsBelge')->getClientOriginalExtension();
+            $ydsBelge->move('Front/uploads/basvuru',$name_ydsBelge); 
+            $data->ydsBelge = $name_ydsBelge;
+     
+         
+        }
     
 
-       $ydsBelge =  $request->file('ydsBelge');
-       $name_ydsBelge = 'YDS'.date('Ymdhis').'.'.$request->file('ydsBelge')->getClientOriginalExtension();
-       $ydsBelge->move('Front/uploads/basvuru',$name_ydsBelge); 
-       $data->ydsBelge = $name_ydsBelge;
 
-       $kimlik =  $request->file('kimlik');
-       $name_kimlik = 'KIMLIK'.date('Ymdhis').'.'.$request->file('kimlik')->getClientOriginalExtension();
+         if($request -> hasFile('kimlik'))
+        {
+            $kimlik =  $request->file('kimlik');
+       $name_kimlik = $request->input('name').' '.$request->input('surname').'-'.'KIMLIK'.date('Ymdhis').'.'.$request->file('kimlik')->getClientOriginalExtension();
        $kimlik->move('Front/uploads/basvuru',$name_kimlik); 
        $data->kimlik = $name_kimlik;
 
-       $diploma =  $request->file('diploma');
-       $name_diploma = 'diploma'.date('Ymdhis').'.'.$request->file('diploma')->getClientOriginalExtension();
+     
+         
+        }
+    
+
+        if($request -> hasFile('diploma'))
+        {
+            $diploma =  $request->file('diploma');
+       $name_diploma = $request->input('name').' '.$request->input('surname').'-'.'diploma'.date('Ymdhis').'.'.$request->file('diploma')->getClientOriginalExtension();
        $diploma->move('Front/uploads/basvuru',$name_diploma); 
        $data->diploma = $name_diploma;
 
-       $transkript =  $request->file('transkript');
-       $name_transkript = 'transkript'.date('Ymdhis').'.'.$request->file('transkript')->getClientOriginalExtension();
-       $transkript->move('Front/uploads/basvuru',$name_transkript); 
-       $data->transkript = $name_transkript;
-  
+     
+         
+        }
+      
+      
 
-       $askerlikDurumuBelgesi =  $request->file('askerlikDurumuBelgesi');
-       $name_askerlik = 'as'.date('Ymdhis').'.'.$request->file('askerlikDurumuBelgesi')->getClientOriginalExtension();
-       $askerlikDurumuBelgesi->move('Front/uploads/basvuru',$name_askerlik); 
-       $data->askerlikDurumuBelgesi = $name_askerlik;
+        if($request -> hasFile('transkript'))
+        {
+            $transkript =  $request->file('transkript');
+            $name_transkript = $request->input('name').' '.$request->input('surname').'-'.'transkript'.date('Ymdhis').'.'.$request->file('transkript')->getClientOriginalExtension();
+            $transkript->move('Front/uploads/basvuru',$name_transkript); 
+            $data->transkript = $name_transkript;
+       
+
+     
+         
+        }
+      
+      
+
+        if($request -> hasFile('askerlikDurumuBelgesi'))
+        {
+            $askerlikDurumuBelgesi =  $request->file('askerlikDurumuBelgesi');
+            $name_askerlik = $request->input('name').' '.$request->input('surname').'-'.'as'.date('Ymdhis').'.'.$request->file('askerlikDurumuBelgesi')->getClientOriginalExtension();
+            $askerlikDurumuBelgesi->move('Front/uploads/basvuru',$name_askerlik); 
+            $data->askerlikDurumuBelgesi = $name_askerlik;
+       
+
+     
+         
+        }
+      
 
 
 
