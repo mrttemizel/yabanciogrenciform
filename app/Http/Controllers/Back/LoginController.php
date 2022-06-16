@@ -17,6 +17,12 @@ class LoginController extends Controller
 
     public function login(Request $request){
      
+        $request->validate(
+            [
+                'g-recaptcha-response' => 'required'
+              
+            ],
+        );
        if(Auth::attempt($request->only('email','password')))
        {
            return redirect()->route('home');

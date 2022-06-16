@@ -1,17 +1,16 @@
 <?php
 
-
+use App\Http\Controllers\Front\LocalizationController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 //Front End Routes
-Route::get('/', function () {
-    return view('front.index');
-});
 
 
 
 
+Route::get('/',[\App\Http\Controllers\Front\StudentController::class,'index'])->name('index');
+Route::get('locale/{lange}',[LocalizationController::class,'setLang']);
 
 
 //Back End Routes
@@ -21,7 +20,7 @@ Route::get('/login',[\App\Http\Controllers\Back\LoginController::class,'loginPag
 Route::post('/loginController',[\App\Http\Controllers\Back\LoginController::class,'login'])->name('login');
 
 
-
+Route::post('/basvuruFormu',[\App\Http\Controllers\Front\StudentController::class,'store'])->name('student.store');
 
 
 
@@ -36,6 +35,15 @@ Route::middleware('auth')->group(function(){
     //Settings Crud
     Route::get('/admin/settings/index',[\App\Http\Controllers\Back\SettingsController::class,'index'])->name('settings.index');
     Route::post('/admin/settings/update',[\App\Http\Controllers\Back\SettingsController::class,'update'])->name('settings.update');
+
+
+
+
+    //Kurumsal Crud
+    Route::get('/admin/basvurular/index',[\App\Http\Controllers\Back\BasvurularController::class,'index'])->name('basvurular.index');
+    Route::post('/admin/basvurular/update',[\App\Http\Controllers\Back\BasvurularController::class,'update'])->name('basvurular.update');
+    Route::get('/admin/basvurular/see{id}',[\App\Http\Controllers\Back\BasvurularController::class,'see'])->name('basvurular.see');
+    Route::get('/admin/basvurular/delete{id}',[\App\Http\Controllers\Back\BasvurularController::class,'delete'])->name('basvurular.delete');
 
 
       //Kurumsal Crud

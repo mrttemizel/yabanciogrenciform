@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('servicesCategori_id');
-            $table->foreign('servicesCategori_id')->references('id')->on('services_catergoris');
+            $table->foreign('servicesCategori_id')->references('id')->on('yuksel_lisans_bolumlers');
             $table->timestamps();
         });
     }

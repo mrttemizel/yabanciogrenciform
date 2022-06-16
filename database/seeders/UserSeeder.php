@@ -17,11 +17,12 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Murat TEMİZEL',
-                'email' => 'info@murattemizel.com',
+                'name' => 'Lisansüstü Eğitim Enstitüsü',
+                'email' => 'lisanustuadmin@antalya.edu.tr',
                 'password' => '$2y$10$npPqUBqgbYqSMtrrG1UMneR0JKYqWLdr0pWPqVQFQ.b9Qa8ZBqOFK',
                 'status' => 1,
-            ]
+            ],
+            
 
         ];
 

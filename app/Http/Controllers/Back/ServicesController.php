@@ -31,6 +31,8 @@ class ServicesController extends Controller
        $data -> incontent_en = $request->input('incontent_en');
        $data -> slug_tr = $request->input('slug_tr');
        $data -> slug_en = $request->input('slug_en');
+
+       
        $data -> servicesCategori_id = $request->input('servicesCategori_id');
        
        if($request -> hasFile('image'))

@@ -72,7 +72,8 @@
                           </div>
                           <div class="col-12">
                             <div class="col-12">
-                              <div class="g-recaptcha" data-sitekey="6Ldmg00gAAAAAJjtdLkx5OtDCZTBY9KGC81a61n-"></div>
+                              <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6Ldmg00gAAAAAJjtdLkx5OtDCZTBY9KGC81a61n-"></div>
+                              <div class="bg-light-danger ml-3">{{$errors->first('g-recaptcha-response')}}</div>
                             </div>
                             <div class="d-grid mt-2">
                               <button type="submit" class="btn radius-30 btn-info text-white" >Giriş Yap</button>
