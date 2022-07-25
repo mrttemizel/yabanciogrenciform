@@ -3,6 +3,8 @@
 use App\Http\Controllers\Front\LocalizationController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Mail\TestEmail;
+
 
 //Front End Routes
 
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[\App\Http\Controllers\Front\StudentController::class,'index'])->name('index');
 Route::get('locale/{lange}',[LocalizationController::class,'setLang']);
+
 
 
 //Back End Routes
@@ -23,13 +26,13 @@ Route::post('/loginController',[\App\Http\Controllers\Back\LoginController::clas
 Route::post('/basvuruFormu',[\App\Http\Controllers\Front\StudentController::class,'store'])->name('student.store');
 
 
-
 Route::middleware('auth')->group(function(){
 
     Route::get('/logout',[\App\Http\Controllers\Back\LoginController::class,'logout'])->name('logout');
 
     Route::get('/admin/home',[\App\Http\Controllers\Back\HomeController::class,'home'])->name('home');
 
+    Route::get('/admin/basvurular/belgeindir{name}',[\App\Http\Controllers\Back\BasvurularController::class,'belgeindir'])->name('belge.indir');
 
 
     //Settings Crud

@@ -26,152 +26,123 @@
 								<tbody>
                                      
                                     <tr>  
-                                        <td>Başurulan Bölüm :</td>
+                                        <td>Başurulan Bölüm  1:</td>
                                         <td>{{ $student -> getBolum -> bolum_adi}}</td>
                                     </tr>
                                     <tr>  
-                                        <td>Adı Soyadı :</td>
-                                        <td>{{ $student -> name." ".$student -> surname }}</td>
+                                        <td>Başurulan Bölüm  2:</td>
+                                        <td>{{ $student -> getBolum2 -> bolum_adi}}</td>
                                     </tr>
                                     <tr>  
                                         <td>Ülke :</td>
-                                        <td>{{ $student -> country }}</td>
+                                        <td>{{ $student -> name.' '. $student -> surname }}</td>
                                     </tr>
                                     <tr>  
-                                        <td>TC / Kimlik No :</td>
+                                        <td>Ülke Pasaport / Kimlik No :</td>
                                         <td>{{ $student -> country_number }}</td>
                                     </tr>
-                                    <tr>  
-                                        <td>Askerlik Durumu :</td>
-                                        @if($student -> askerlik_durumu == 1)
-                                        <td>Yapıldı</td>
-                                        @elseif($student -> askerlik_durumu == 2)
-                                        <td>Yapılmadı</td>
-                                        @elseif($student -> askerlik_durumu == 3)
-                                        <td>Muaf</td>
-                                        @else
-                                        <td>Secim Yapılmamış</td>
-                                        @endif
+                                      <tr>  
+                                        <td>Doğum Yeri :</td>
+                                        <td>{{ $student -> place_of_birth }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>Doğum Tarihi :</td>
+                                        <td>Doğum Yeri :</td>
                                         <td>{{ $student -> dg_tarihi }}</td>
                                     </tr>
+
                                     <tr>  
                                         <td>Şehir :</td>
                                         <td>{{ $student -> sehir }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>İlçe :</td>
-                                        <td>{{ $student -> ilce }}</td>
-                                    </tr>
-                                    <tr>  
-                                        <td>Cep Telefonu :</td>
-                                        <td>{{ $student -> cep_number }}</td>
-                                    </tr>
-                                    <tr>  
-                                        <td>E-Posta :</td>
-                                        <td>{{ $student -> email }}</td>
-                                    </tr>
-                                    <tr>  
-                                        <td>Adres:</td>
+                                        <td>Adres :</td>
                                         <td>{{ $student -> adres }}</td>
                                     </tr>
+
+                                    <tr>  
+                                        <td>Telefon :</td>
+                                        <td>{{ $student -> cep_number_number }}</td>
+                                    </tr>
+
+                                    <tr>  
+                                        <td>Email :</td>
+                                        <td>{{ $student -> email }}</td>
+                                    </tr>
+
                                     <tr>  
                                         <td>Üniversite :</td>
                                         <td>{{ $student -> university }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>Fakülte :</td>
-                                        <td>{{ $student -> faculty }}</td>
+                                        <td>Okul Ülke :</td>
+                                        <td>{{ $student -> country }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>Bölüm :</td>
-                                        <td>{{ $student -> birim }}</td>
+                                        <td>Okul Şehir :</td>
+                                        <td>{{ $student -> scholl_city }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>Başlangıç Tarihi :</td>
-                                        <td>{{ $student -> Dateofstart }}</td>
-                                    </tr>
-                                    <tr>  
-                                        <td>Mezuniyet Tarihi:</td>
+                                        <td>Bitirme Tarihi :</td>
                                         <td>{{ $student -> Dateoffinish }}</td>
                                     </tr>
                                     <tr>  
                                         <td>Derece :</td>
                                         <td>{{ $student -> degree }}</td>
                                     </tr>
+
                                     <tr>  
-                                        <td>Ales Puanı:</td>
-                                        @if (empty($student -> ales))
-                                            <td>Değer Girilmemiş</td>
+                                        <td>Dier Sınav Belge</td>
+                                        @if (empty($student->exam_file_i))
+                                        <td>Belge Yüklenmemiş</td>
                                         @else
-                                        <td>{{ $student -> ales }}</td>
-                                        @endif
-                                    </tr>
-                                    <tr>  
-                                        <td>Yabancı Dil Puanı</td>
-                                        @if (empty($student -> yds))
-                                        <td>Değer Girilmemiş</td>
-                                    @else
-                                    <td>{{ $student -> yds }}</td>
-                                    @endif
+                                        <td>
+                                            <a href="{{ route('belge.indir', [$student->exam_file_i]) }}"  target="_blank">                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
+                                            </a>
+                                        </td>
+                                     @endif
                                     </tr>
 
                                     <tr>  
-                                        <td>Ales Belge</td>
-                                        @if (empty($student->alesBelge))
+                                        <td>Pasaport Resmi :</td>
+                                        @if (empty($student->passport_photo))
                                         <td>Belge Yüklenmemiş</td>
                                     @else
                                     <td>
-                                        <a href="{{ asset('front/uploads/basvuru/'.$student->alesBelge) }}"  target="_blank">
-                                        <button class="btn btn-sm btn-danger">İNDİR</button></a>
+                                            <a href="{{ route('belge.indir', [$student->passport_photo]) }}"  target="_blank">                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
+                                           </a>
                                     </td>
                                      @endif
                                     </tr>
 
-
                                     <tr>  
-                                        <td>Yabancı Dil Belge</td>
-                                        @if (empty($student->ydsBelge))
+                                        <td>Transkript :</td>
+                                        @if (empty($student->transkript))
                                         <td>Belge Yüklenmemiş</td>
                                     @else
-                                    <td><a href="{{ asset('front/uploads/basvuru/'.$student->ydsBelge) }}"  target="_blank">
-                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
-                                    @endif
+                                    <td>
+                                            <a href="{{ route('belge.indir', [$student->transkript]) }}"  target="_blank">                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
+                                            </a>
+                                    </td>
+                                     @endif
                                     </tr>
 
                                     <tr>  
-                                        <td>Kimlik Belge :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->kimlik) }}"  target="_blank">
-                                            <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
-                                    </tr>
-
-                                    <tr>  
-                                        <td>Diploma :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->diploma) }}"  target="_blank">
-                                            <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
-                                        
-                                    </tr>
-                                    <tr>  
-                                        <td>Transcript :</td>
-                                        <td><a href="{{ asset('front/uploads/basvuru/'.$student->transkript) }}"  target="_blank">
-                                            <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
-                                    </tr>
-                                    
-                                    
-                                    <tr>  
-                                        <td>Askerlik Durum Belgesi</td>
-                                        @if (empty($student->askerlikDurumuBelgesi))
+                                        <td>Dil Sonucu :</td>
+                                        @if (empty($student->test_score))
                                         <td>Belge Yüklenmemiş</td>
                                     @else
-                                    <td> <a href="{{ asset('front/uploads/basvuru/'.$student->askerlikDurumuBelgesi) }}"  target="_blank">
-                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
-                                    @endif
+                                    <td>
+                                            <a href="{{ route('belge.indir', [$student->test_score]) }}"  target="_blank">                                        <button class="btn btn-sm btn-danger">İNDİR</button></a></td>
+                                            </a>
+                                    </td>
+                                     @endif
                                     </tr>
-                                   
-									
-								</tbody>
+                                </tbody>
 							</table>
 
 

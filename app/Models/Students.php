@@ -13,6 +13,10 @@ class Students extends Model
         return $this->hasOne(YukselLisansBolumler::class,'id','bolum_id');
     }
 
+    public function getBolum2(){
+        return $this->hasOne(YukselLisansBolumler::class,'id','bolum_id_2');
+    }
+
 
     protected $guarded = [];
 }

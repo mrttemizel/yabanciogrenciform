@@ -25,10 +25,11 @@
 								<thead>
 									<tr>
 										<th>Adı Soyadı</th>
-										<th>Bölüm</th>
-										<th>AlES Puanı</th>
-										<th>Derece</th>
-										<th>YDS</th>
+										<th>Bölüm 1</th>
+										<th>Bölüm 2</th>
+										<th>Ülke</th>
+										<th>Mezuniyet Derecesi</th>
+										
 										<th>Düzenle</th>
 									</tr>
 								</thead>
@@ -40,8 +41,9 @@
                                        
                                     <td>{{ $item -> name." ".$item -> surname }}</td>
                                     <td>{{ $item -> getBolum -> bolum_adi}}</td>
-									<td>{{ $item -> ales }}</td>
-									<td>{{ $item -> yds }}</td>
+                                    <td>{{ $item -> getBolum2 -> bolum_adi}}</td>
+                                    <td>{{ $item -> country}}</td>
+									
 									<td>{{ $item -> degree }}</td>
 									
                                    

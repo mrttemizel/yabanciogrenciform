@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Students;
 use App\Models\YukselLisansBolumler;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 use App\Mail\FormSubmit; 
 use Illuminate\Support\Facades\Stroage;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Contracts\Service\Attribute\Required;
+
 
 class StudentController extends Controller
 {
@@ -30,137 +32,110 @@ class StudentController extends Controller
 
         $request->validate(
             [
-                'bolum_id' => 'required',
+              
                 'name' => 'required',
                 'surname' => 'required',
                 'country' => 'required',
                 'country_number' => 'required',
+                'place_of_birth' => 'required',
+                'dg_tarihi' => 'required',
                 'sehir' => 'required',
-                'ilce' => 'required',
-                'adres' => 'required',
-                'cep_number' => 'required',
-                'email' => 'required|email',
-                'university' => 'required',
-                'faculty' => 'required',
-                'birim' => 'required',
-                'Dateofstart' => 'required',
-                'Dateoffinish' => 'required',
+                'cep_number_number' => 'required',
                 'degree' => 'required',
-                'alesBelge' => 'mimes:docx,pdf,jpg,bmp,png,doc',
-                'kimlik' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
-                'diploma' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
-                'transkript' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
-                'askerlikDurumuBelgesi' => 'mimes:docx,pdf,jpg,bmp,png,doc',
+                'email' => 'required|email',
+                'adres' => 'required',
+                'university' => 'required',
+                'scholl_country' => 'required',
+                'scholl_city' => 'required',
+                'Dateoffinish' => 'required',
+                'transkript' => 'mimes:docx,pdf,jpg,bmp,png,doc',
+                'test_score' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
+                'passport_photo' => 'required|mimes:docx,pdf,jpg,bmp,png,doc',
+                'exam_file_i' => 'mimes:docx,pdf,jpg,bmp,png,doc',
                 'kvkk' => 'required',
+                'kvkk2' => 'required',
+                'bolum_id' => 'required',
+                'bolum_id_2' => 'required',
                               
             ],
         );
         
-  
+   
        $data = new Students();
 
        $data -> bolum_id = $request->input('bolum_id');
+       $data -> bolum_id_2 = $request->input('bolum_id_2');
        $data -> name = $request->input('name');
        $data -> surname = $request->input('surname');
        $data -> country = $request->input('country');
        $data -> country_number = $request->input('country_number');
-       $data -> askerlik_durumu = $request->input('askerlik_durumu');
+       $data -> place_of_birth = $request->input('place_of_birth');
        $data -> dg_tarihi = $request->input('dg_tarihi');
        $data -> sehir = $request->input('sehir');
-       $data -> ilce = $request->input('ilce');
-       $data -> cep_number = $request->input('cep_number');
+       $data -> cep_number_number = $request->input('cep_number_number');
        $data -> email = $request->input('email');
        $data -> adres = $request->input('adres');
-       $data -> university = $request->input('university');
-       $data -> faculty = $request->input('faculty');
-       $data -> birim = $request->input('birim');
-       $data -> Dateofstart = $request->input('Dateofstart');
-       $data -> Dateoffinish = $request->input('Dateoffinish');
        $data -> degree = $request->input('degree');
-       $data -> ales = $request->input('ales');
-       $data -> yds = $request->input('yds');
+       $data -> university = $request->input('university');
+       $data -> scholl_country = $request->input('scholl_country');
+       $data -> scholl_city = $request->input('scholl_city');
+       $data -> Dateoffinish = $request->input('Dateoffinish');
        $data -> kvkk = $request->input('kvkk');
+       $data -> kvkk2 = $request->input('kvkk2');
      
        
 
-       if($request -> hasFile('alesBelge'))
-        {
-            $alesBelge =  $request->file('alesBelge');
-            $name_alesBelge = $request->input('name').' '.$request->input('surname').'-'.'ALES'.date('Ymdhis').'.'.$request->file('alesBelge')->getClientOriginalExtension();
-            $alesBelge->move('Front/uploads/basvuru',$name_alesBelge); 
-            $data->alesBelge = $name_alesBelge;
-         
-        }
-      
-        if($request -> hasFile('ydsBelge'))
-        {
-            $ydsBelge =  $request->file('ydsBelge');
-            $name_ydsBelge = $request->input('name').' '.$request->input('surname').'-'.'YDS'.date('Ymdhis').'.'.$request->file('ydsBelge')->getClientOriginalExtension();
-            $ydsBelge->move('Front/uploads/basvuru',$name_ydsBelge); 
-            $data->ydsBelge = $name_ydsBelge;
-     
-         
-        }
-    
-
-
-         if($request -> hasFile('kimlik'))
-        {
-            $kimlik =  $request->file('kimlik');
-       $name_kimlik = $request->input('name').' '.$request->input('surname').'-'.'KIMLIK'.date('Ymdhis').'.'.$request->file('kimlik')->getClientOriginalExtension();
-       $kimlik->move('Front/uploads/basvuru',$name_kimlik); 
-       $data->kimlik = $name_kimlik;
-
-     
-         
-        }
-    
-
-        if($request -> hasFile('diploma'))
-        {
-            $diploma =  $request->file('diploma');
-       $name_diploma = $request->input('name').' '.$request->input('surname').'-'.'diploma'.date('Ymdhis').'.'.$request->file('diploma')->getClientOriginalExtension();
-       $diploma->move('Front/uploads/basvuru',$name_diploma); 
-       $data->diploma = $name_diploma;
-
-     
-         
-        }
-      
-      
-
-        if($request -> hasFile('transkript'))
+       if($request -> hasFile('transkript'))
         {
             $transkript =  $request->file('transkript');
             $name_transkript = $request->input('name').' '.$request->input('surname').'-'.'transkript'.date('Ymdhis').'.'.$request->file('transkript')->getClientOriginalExtension();
             $transkript->move('Front/uploads/basvuru',$name_transkript); 
             $data->transkript = $name_transkript;
-       
-
-     
          
         }
       
-      
-
-        if($request -> hasFile('askerlikDurumuBelgesi'))
+        if($request -> hasFile('test_score'))
         {
-            $askerlikDurumuBelgesi =  $request->file('askerlikDurumuBelgesi');
-            $name_askerlik = $request->input('name').' '.$request->input('surname').'-'.'as'.date('Ymdhis').'.'.$request->file('askerlikDurumuBelgesi')->getClientOriginalExtension();
-            $askerlikDurumuBelgesi->move('Front/uploads/basvuru',$name_askerlik); 
-            $data->askerlikDurumuBelgesi = $name_askerlik;
-       
-
+            $test_score =  $request->file('test_score');
+            $name_test_score = $request->input('name').' '.$request->input('surname').'-'.'TS'.date('Ymdhis').'.'.$request->file('test_score')->getClientOriginalExtension();
+            $test_score->move('Front/uploads/basvuru',$name_test_score); 
+            $data->test_score = $name_test_score;
      
          
         }
+    
+        
+        if($request -> hasFile('exam_file_i'))
+        {
+            $exam_file_i =  $request->file('exam_file_i');
+            $name_exam_file_i = $request->input('name').' '.$request->input('surname').'-'.'EF'.date('Ymdhis').'.'.$request->file('exam_file_i')->getClientOriginalExtension();
+            $exam_file_i->move('Front/uploads/basvuru',$name_exam_file_i); 
+            $data->exam_file_i = $name_exam_file_i;
+     
+         
+        }
+
+
+         if($request -> hasFile('passport_photo'))
+        {
+            $passport_photo =  $request->file('passport_photo');
+            $name_passport_photo = $request->input('name').' '.$request->input('surname').'-'.'PAS'.date('Ymdhis').'.'.$request->file('passport_photo')->getClientOriginalExtension();
+            $passport_photo->move('Front/uploads/basvuru',$name_passport_photo); 
+            $data->passport_photo = $name_passport_photo;
+ 
+        }
+    
+
       
+         $data->save();     
+         $email = $request->input('email');
+         $content = [
+           'name' => $request->name,
+           'surname' => $request->surname,
+       ];
 
-
-
-         $data->save();
-
-        return redirect()->back()->with('status','Başvurunuz Alınmıştır');
+           Mail::to($email)->cc('iso@antalya.edu.tr')->bcc('bt.destek@antalya.edu.tr')->send(new SendMail($content));
+            return redirect()->back()->with('status','Your application has been received');
 
     }
 }

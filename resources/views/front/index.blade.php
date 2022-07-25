@@ -70,16 +70,8 @@ text-align: center;
    
      
 
-          <h5 class="text-center" style="color: #172751">@lang('form.baslik')</h5>
-          <div class="dropdown lang-dropdown mb-4">
-            <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                Language
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-              <li> <a href="locale/en">@lang('form.en')</a></li>
-              <li>  <a href="locale/tr">@lang('form.tr')</a></li>
-            </ul>
-          </div>
+          <h5 class="text-center" style="color: #172751">Undergraduate Application Form</h5>
+       
 </div>
 
 
@@ -106,20 +98,8 @@ text-align: center;
                             </div>
                              
                              @endif 
-            <h5 class="mb-4 text-uppercase">@lang('form.kisisel_bilgiler')</h5>
-            <div class="row">
-                <div class="mb-3 col-12">
-
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.bolumler')</label>
-                    <select class="form-select mb-3" aria-label="Default select example"  name="bolum_id">
-                        <option selected=""  disabled >@lang('form.seciniz')</option>
-                        @foreach( $bolumler as $item)
-                        <option value="{{$item -> id}}">{{$item ->bolum_adi}}</option>
-                        @endforeach
-                    </select>
-                    <div class="bg-light-danger ml-3">{{$errors->first('bolum_id')}}</div> 
-                </div>    
-            </div>
+            <h5 class="mb-4 text-uppercase">PERSONAL DETAILS</h5>
+          
       
 
 
@@ -127,7 +107,7 @@ text-align: center;
             
             <div class="row">
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span>@lang('form.ad')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Name</label>
                     <input type="text" name="name"  value="{{ old('name') }}" class="form-control">
                  
                     
@@ -136,7 +116,7 @@ text-align: center;
                 </div>
 
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span>@lang('form.soyad')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Surname</label>
                     <input type="text" name="surname" value="{{ old('surname') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('surname')}}</div>
                 </div>
@@ -144,88 +124,84 @@ text-align: center;
                 
             <div class="row">
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span>@lang('form.ülke')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Country</label>
                     <input type="text" name="country" value="{{ old('country') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('country')}}</div>
                 </div>
 
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span>@lang('form.tc')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Passport No / Nationality ID</label>
                     <input type="text" name="country_number" value="{{ old('country_number') }}"  class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('country_number')}}</div>
                 </div>
             </div>
             <div class="row">
                 <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.askerlik_durumu')</label>
-                    <select class="form-select mb-3" aria-label="Default select example"   name="askerlik_durumu">
-                        <option selected="" disabled>@lang('form.seciniz')</option>
-                        <option value="1">@lang('form.yapıldı')</option>
-                        <option value="2">@lang('form.yapılmadı')</option>
-                        <option value="3">@lang('form.muaf')</option>
-                    </select>
+                    <label class="form-label"><span class="text-danger">* </span>Place of Birth</label>
+                    <input type="text" name="place_of_birth" value="{{ old('place_of_birth') }}"  class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('place_of_birth')}}</div>
                 </div>
 
                 <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.dogum_tarihi')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Date of Birth</label>
                     <input type="date" name="dg_tarihi" value="{{ old('dg_tarihi') }}" class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('dg_tarihi')}}</div>
                 </div>
             </div>
+            <div class="row">
+                <div class="mb-3 col-12">
+                    <label class="form-label"><span class="text-danger">* </span> Passaport Photo</label>
+                    <input type="file" name="passport_photo"  value="{{ old('passport_photo') }}" class="form-control" id="inputGroupFile02">
+                    <div class="bg-light-danger ml-3">{{$errors->first('passport_photo')}}</div>
 
+                </div>
+            </div>
      
         
 
 
             <div class="row">
-                <h5 class=" mt-4 mb-4 text-uppercase">@lang('form.iletisim_bilgileri')</h5>
+                <h5 class=" mt-4 mb-4 text-uppercase">CONTACT DETAILS</h5>
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.sehir')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Country</label>
                     <input type="text" name="sehir"  value="{{ old('sehir') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('sehir')}}</div>
 
                 </div>
 
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span>  @lang('form.ilce')</label>
-                    <input type="text" name="ilce"  value="{{ old('ilce') }}" class="form-control">
-                    <div class="bg-light-danger ml-3">{{$errors->first('ilce')}}</div>
-
-                </div>
-             </div>
-
-             <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.cep_tel')</label>
-                    <input type="text" name="cep_number"  value="{{ old('cep_number') }}" class="form-control">
-                    <div class="bg-light-danger ml-3">{{$errors->first('cep_number')}}</div>
-
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.e-posta')</label>
-                    <input type="email" name="email"  value="{{ old('email') }}" class="form-control">
-                    <div class="bg-light-danger ml-3">{{$errors->first('email')}}</div>
-
-                </div>
-             </div>
-
-             <div class="row">
-                <div class="mb-3 col-12">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.adres')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Adress</label>
                     <input type="text" name="adres"  value="{{ old('adres') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('adres')}}</div>
 
                 </div>
              </div>
 
+             <div class="row">
+                <div class="mb-3 col-6">
+                    <label class="form-label"><span class="text-danger">* </span>Phone Number</label>
+                    <input type="text" name="cep_number_number"  value="{{ old('cep_number_number') }}" class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('cep_number_number')}}</div>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label class="form-label"><span class="text-danger">* </span>Email</label>
+                    <input type="email" name="email"  value="{{ old('email') }}" class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('email')}}</div>
+
+                </div>
+             </div>
+
+           
 
             
 
-            <h5 class=" mt-4 mb-4 text-uppercase">@lang('form.lisans_mezuniyet_bilgisi')</h5>
+            <h5 class=" mt-4 mb-4 text-uppercase">HIGH SCHOOL INFORMATION</h5>
 
             <div class="row">
                 <div class="mb-3 col-12">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.universite')</label>
+                    <label class="form-label"><span class="text-danger">* </span>High School</label>
                     <input type="text" name="university"  value="{{ old('university') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('university')}}</div>
 
@@ -234,105 +210,108 @@ text-align: center;
 
              <div class="row">
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.fakulte')</label>
-                    <input type="text" name="faculty"  value="{{ old('faculty') }}" class="form-control">
-                    <div class="bg-light-danger ml-3">{{$errors->first('faculty')}}</div>
+                    <label class="form-label"><span class="text-danger">* </span>Country</label>
+                    <input type="text" name="scholl_country"  value="{{ old('scholl_country') }}" class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('scholl_country')}}</div>
 
                 </div>
 
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.birim')</label>
-                    <input type="text" name="birim"  value="{{ old('birim') }}" class="form-control">
-                    <div class="bg-light-danger ml-3">{{$errors->first('birim')}}</div>
+                    <label class="form-label"><span class="text-danger">* </span>City</label>
+                    <input type="text" name="scholl_city"   value="{{ old('scholl_city') }}" class="form-control">
+                    <div class="bg-light-danger ml-3">{{$errors->first('scholl_city')}}</div>
 
                 </div>
              </div>
 
              <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.baslangıc_tarihi')</label>
-                       <input type="date" name="Dateofstart" value="{{ old('Dateofstart') }}" class="form-control">
-                       <div class="bg-light-danger ml-3">{{$errors->first('Dateofstart')}}</div>
-
-                </div>
+            
 
                 <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.mezuniyet_tarihi')</label>
+                    <label class="form-label"><span class="text-danger">* </span>Year of Graduation</label>
                     <input type="date" name="Dateoffinish" value="{{ old('Dateoffinish') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('Dateoffinish')}}</div>
-
+                    
                 </div>
-             </div>
 
-             <div class="row">
-                <div class="mb-3 col-12">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.derece')</label>
+                <div class="mb-3 col-6">
+                    <label class="form-label"><span class="text-danger">* </span>Graduation Degree</label>
                     <input type="text" name="degree"  value="{{ old('degree') }}" class="form-control">
                     <div class="bg-light-danger ml-3">{{$errors->first('degree')}}</div>
 
                 </div>
              </div>
 
-           
-            <h5 class=" mt-4 mb-4 text-uppercase">@lang('form.sinav_sonuclari')</h5>
-
-            <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label"> @lang('form.ales')</label>
-                    <input type="text" name="ales" value="{{ old('ales') }}"  class="form-control">
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.yabanci_dil')</label>
-                    <input type="text" name="yds"  value="{{ old('yds') }}" class="form-control">
-                </div>
-             </div>
-
-
-
-
-            <h5 class=" mt-4 mb-4 text-uppercase">@lang('form.yuklemeler')</h5>
-
-            <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.ales_belge')</label>
-                    <input type="file" name="alesBelge"  value="{{ old('alesBelge') }}" class="form-control" id="inputGroupFile02">
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.yabanci_dil_belge')</label>
-                    <input type="file" name="ydsBelge"  value="{{ old('ydsBelge') }}" class="form-control" id="inputGroupFile02">
-                </div>
-             </div>
              <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.kimlik_belge')</label>
-                    <input type="file" name="kimlik" value="{{ old('kimlik') }}"  class="form-control" id="inputGroupFile02">
-                    <div class="bg-light-danger ml-3">{{$errors->first('kimlik')}}</div>
-
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.diploma')</label>
-                    <input type="file" name="diploma"  value="{{ old('diploma') }}" class="form-control" id="inputGroupFile02">
-                    <div class="bg-light-danger ml-3">{{$errors->first('diploma')}}</div>
-
-                </div>
-             </div>
-             <div class="row">
-                <div class="mb-3 col-6">
-                    <label class="form-label"><span class="text-danger">* </span> @lang('form.traskript')</label>
-                    <input type="file" name="transkript"  value="{{ old('transkript') }}" class="form-control" id="inputGroupFile02">
+                
+                <div class="mb-3 col-12">
+                    <label class="form-label"><span class="text-danger">* </span>Official Transcript "3 Years"</label>
+                    <input type="file" name="transkript" value="{{ old('transkript') }}"  class="form-control" id="inputGroupFile02">
                     <div class="bg-light-danger ml-3">{{$errors->first('transkript')}}</div>
-
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label">@lang('form.askerlik_durum_belgesi')</label>
-                    <input type="file" name="askerlikDurumuBelgesi" value="{{ old('askerlikDurumuBelgesi') }}" class="form-control" id="inputGroupFile02">
                 </div>
              </div>
 
+           
+            <h5 class=" mt-4 mb-4 text-uppercase">TEST SCORES AND DOCUMENTS</h5>
+
+            <div class="row">
+                <div class="mb-3 col-12">
+                <label class="form-label"><span class="text-danger">* </span>If taken before, a copy of language proficiency exam result (e.g. TOEFL etc.)</label>
+                <input type="file" name="test_score" value="{{ old('test_score') }}"  class="form-control" id="inputGroupFile02">
+                <div class="bg-light-danger ml-3">{{$errors->first('test_score')}}</div>
+                </div> 
+              
+             </div>
+
+             <div class="row">
+                <div class="mb-3 col-12">
+                <label class="form-label">A copy of exam record acceptable by the university (e.g., SAT, ACT, A Level, etc.)</label>
+                <input type="file" name="exam_file_i" value="{{ old('exam_file_i') }}"  class="form-control" id="inputGroupFile02">
+                <div class="bg-light-danger ml-3">{{$errors->first('exam_file_i')}}</div>
+                </div> 
+              
+             </div>
+
+             <h5 class=" mt-4 mb-4 text-uppercase">PROGRAM DETAILS</h5>
+             <div class="row">
+                <div class="mb-3 col-12">
+
+                    <label class="form-label"><span class="text-danger">* </span>Preference 1 </label>
+                    <select class="form-select" aria-label="Default select example"  name="bolum_id">
+                        <option selected=""  disabled >Choose</option>
+                        @foreach( $bolumler as $item)
+                        <option value="{{$item -> id}}">{{$item ->bolum_adi}}</option>
+                        @endforeach
+                    </select>
+                    <div class="bg-light-danger ml-3">{{$errors->first('bolum_id')}}</div> 
+                </div> 
+                <div class="mb-3 col-12">
+
+                    <label class="form-label"><span class="text-danger">* </span>Preference 2</label>
+                    <select class="form-select mb" aria-label="Default select example"  name="bolum_id_2">
+                        <option selected=""  disabled >Choose</option>
+                        @foreach( $bolumler as $item)
+                        <option value="{{$item -> id}}">{{$item ->bolum_adi}}</option>
+                        @endforeach
+                    </select>
+                    <div class="bg-light-danger ml-3">{{$errors->first('bolum_id')}}</div> 
+                </div>   
+            </div>
+             
+            <h5 class=" mt-4 mb-4 text-uppercase">APPLICATION STATUS</h5>
+            <div class="form-check mb-3 col-12 mt-3">
+                <input class="form-check-input" name="kvkk2" type="checkbox" value="on" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault"><a href="#"><span class="text-danger">* </span>I Confirm that,
+                    1. I will bring all required documents for the final registration.
+                    2. If my GPA will be less than 2.5 the University has the complete right to deduct my scholarship (If available)as per the condition stated in the tuition fees information.
+                    3. If I don't get equivalency from the Ministry of Education in Turkey the University won't take any responsibility and can cancel the registration.
+                    4. I will require my deposit fees only in case of visa rejection confirmed from the embassy.
+                    5. Tuition fees are paid at beginning of each academic year.
+                    6. Tuition fees are non-refundable.</label>
+                    <div class="bg-light-danger ml-3">{{$errors->first('kvkk2')}}</div>
+            </div>
+
+           
          
             <div class="form-check mb-3 col-12 mt-3">
                 <input class="form-check-input" name="kvkk" type="checkbox" value="on" id="flexCheckDefault">
@@ -345,7 +324,7 @@ text-align: center;
 
 
          <div class="form-group mb-3 mt-2">
-            <button type="submit" class="btn btn-primary">@lang('form.basvur_buton')</button>
+            <button type="submit" class="btn btn-primary">SEND</button>
         </div>
 
         </form>
