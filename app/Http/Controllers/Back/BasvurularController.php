@@ -30,4 +30,10 @@ class BasvurularController extends Controller
         return redirect()->back()->with('status','Başvuru Silindi');
         
     }
+
+    public function belgeindir($name)
+    {
+        $file= public_path(). '/front/uploads/basvuru/'.$name;
+        return response()->download($file);
+    }
 }
