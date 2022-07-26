@@ -72,9 +72,7 @@
 		     <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
        <!--End Back To Top Button-->
 
-       <!--start switcher-->
-      @include('back.layouts._partials._switchColor')
-       <!--end switcher-->
+      
 
   </div>
   <!--end wrapper-->

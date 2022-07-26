@@ -15,8 +15,14 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
 
-
-
+      <li>
+        <a href="{{ route('home') }}">
+          <div class="parent-icon"><i class="fadeIn animated bx bx-home-circle"></i>
+          </div>
+          
+          <div class="menu-title">Anasayfa</div>
+        </a>
+      </li>
 
       <li>
         <a href=" {{ route('basvurular.index') }} ">

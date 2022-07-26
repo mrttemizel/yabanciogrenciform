@@ -266,7 +266,7 @@ text-align: center;
              <div class="row">
                 <div class="mb-3 col-12">
                 <label class="form-label">A copy of exam record acceptable by the university (e.g., SAT, ACT, A Level, etc.)</label>
-                <input type="file" name="exam_file_i" value="{{ old('exam_file_i') }}"  class="form-control" id="inputGroupFile02">
+                <input type="file" name="exam_file_i" id="exam_file_i" value="{{ old('exam_file_i') }}"  class="form-control" id="inputGroupFile02">
                 <div class="bg-light-danger ml-3">{{$errors->first('exam_file_i')}}</div>
                 </div> 
               
@@ -333,7 +333,7 @@ text-align: center;
 
 
 @section('addjs')
-    
+
 
 @endsection
 
